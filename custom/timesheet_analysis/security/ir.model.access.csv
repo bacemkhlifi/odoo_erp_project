@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_employees,access_employees,model_employee,,1,1,1,1
+access_trainees,access_trainees,model_trainees,,1,1,1,1
+access_trainings,access_trainings,model_trainings,,1,1,1,1

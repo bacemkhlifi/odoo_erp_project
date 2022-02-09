@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="developer_action" model="ir.actions.act_window">
+           <field name="name">Developer</field>
+          <field name="type">ir.actions.act_window</field>
+           <field name="res_model">employee</field>
+
+           <field name="view_mode">tree,kanban,form</field>
+           <field name="domain"> [('role', '=','developer' )] </field>
+           <field name="help" type="html">
+               <p class="o_view_nocontent_smiling_face" >
+                   Add a new employee
+               </p>
+           </field>
+
+       </record>
+    <record id="developer_tree" model="ir.ui.view">
+        <field name="name">employee.developer.tree</field>
+        <field name="model">employee</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="age"/>
+                <field name="note"/>
+                 <field name="project"/>
+                <field name="task"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="employee_developer_form" model="ir.ui.view">
+        <field name="name">employee.developer.form</field>
+        <field name="model">employee</field>
+        <field name="arch" type="xml">
+            <form>
+
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="age"/>
+                        </group>
+                        <group>
+                            <field name="gender"/>
+                            <field name="note"/>
+                        </group>
+                        <group>
+                            <field name="project"/>
+                            <field name="task"/>
+                            <field name="role"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+<!--start search -->
+
+    <!--ens search-->
+
+    <menuitem id="developer_id"
+              name="Developer"
+              parent="employee_id"
+              action="developer_action"
+              sequence="10"/>
+
+
+
+
+
+</odoo>

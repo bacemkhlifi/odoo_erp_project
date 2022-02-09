@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="trainees_tree" model="ir.ui.view">
+        <field name="name">trainees.tree</field>
+        <field name="model">trainees</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="note"/>
+                <field name="name"/>
+                <field name="project"/>
+                <field name="task"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="trainees_form" model="ir.ui.view">
+        <field name="name">trainees.form</field>
+        <field name="model">trainees</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="note"/>
+                        </group>
+                        <group>
+                            <field name="project"/>
+                            <field name="task"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="trainees_action" model="ir.actions.act_window">
+        <field name="name">trainees</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">trainees</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new trainee
+            </p>
+        </field>
+
+    </record>
+    <menuitem id="trainees_id"
+              name="Trainees"
+              parent="company_id"
+              sequence="7"/>
+    <menuitem id="trainee_id"
+              name="Trainees"
+              parent="trainees_id"
+              action="trainees_action"
+              sequence="7"/>
+
+
+</odoo>

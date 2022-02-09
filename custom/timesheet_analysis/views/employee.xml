@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="employee_action" model="ir.actions.act_window">
+           <field name="name">Employee</field>
+          <field name="type">ir.actions.act_window</field>
+           <field name="res_model">employee</field>
+           <field name="view_mode">tree,kanban,form</field>
+           <field name="help" type="html">
+               <p class="o_view_nocontent_smiling_face" >
+                   Add a new employee
+               </p>
+           </field>
+
+       </record>
+    <record id="employee_tree" model="ir.ui.view">
+        <field name="name">employee.tree</field>
+        <field name="model">employee</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="age"/>
+                <field name="note"/>
+                 <field name="project"/>
+                <field name="task"/>
+                <field name="role"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="employee_form" model="ir.ui.view">
+        <field name="name">employee.form</field>
+        <field name="model">employee</field>
+        <field name="arch" type="xml">
+            <form>
+
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="age"/>
+                        </group>
+                        <group>
+                            <field name="gender"/>
+                            <field name="note"/>
+                        </group>
+                        <group>
+                            <field name="project"/>
+                            <field name="task"/>
+                            <field name="role"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+<!--start search -->
+    <record id="search_employee" model="ir.ui.view">
+       <field name="name">employee.search</field>
+       <field name="model">employee</field>
+        <field name="arch" type="xml">
+            <search string="name">
+                <field name="name"  />
+                <field name="project"/>
+                <field name="task"/>
+                <filter name="Male" string="male" domain="[('gender', '=', 'male')]"/>
+                    <separator/>
+                      <group expand="0" string="Group By">
+                        <filter string="project" name="department" domain="[]" context="{'group_by': 'project'}"/>
+                        <filter string="task" name="task" domain="[]" context="{'group_by': 'task'}"/>
+                              </group>
+
+
+        </search>
+       </field>
+    </record>
+
+    <!--ens search-->
+    <menuitem id="company_id"
+              name="Company"
+
+              sequence="7"/>
+    <menuitem id="employee_id"
+              name="Employees"
+              parent="company_id"
+             
+              sequence="7"/> 
+      <menuitem id="employee_list_id"
+              name="Employees"
+              parent="employee_id"
+                action="employee_action"
+              sequence="-100"/>
+
+
+
+
+</odoo>
